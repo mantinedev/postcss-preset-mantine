@@ -1,0 +1,33 @@
+{
+  "name": "postcss-preset-mantine",
+  "version": "1.0.0",
+  "description": "PostCSS preset for Mantine (7.0+) applications",
+  "main": "preset.js",
+  "dependencies": {
+    "postcss-dir-pseudo-class": "^7.0.2",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1",
+    "postcss-rem": "^2.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rtivital/postcss-preset-mantine.git"
+  },
+  "keywords": [
+    "postcss",
+    "mantine",
+    "react",
+    "css"
+  ],
+  "author": "rtivital@gmail.com",
+  "license": "MIT",
+  "peerDependencies": {
+    "postcss": "^8.4.21"
+  }
+}
