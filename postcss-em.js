@@ -3,7 +3,7 @@ const { convert } = require('startijenn-rem');
 const defaults = {
   name: 'em',
   fallback: false,
-  convert: 'rem',
+  convert: 'em',
   baseline: 16,
   precision: 5,
 };
