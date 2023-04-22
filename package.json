@@ -1,14 +1,17 @@
 {
   "name": "postcss-preset-mantine",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "PostCSS preset for Mantine (7.0+) applications",
   "main": "preset.js",
+  "peerDependencies": {
+    "postcss": "^8.4.21"
+  },
   "dependencies": {
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.1",
-    "postcss-rem": "^2.0.2"
+    "startijenn-rem": "^1.1.1"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "postcss": "^8.4.21"
   },
   "scripts": {

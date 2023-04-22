@@ -1,7 +1,6 @@
 const nested = require('postcss-nested');
-const rem = require('postcss-rem');
-const em = require('./postcss-em');
 const mixins = require('postcss-mixins');
+const remEm = require('./postcss-rem-em');
 
 function colorSchemeMixin(colorScheme) {
   return {
@@ -47,8 +46,7 @@ function creator() {
     postcssPlugin: 'postcss-preset-mantine',
     plugins: [
       nested(),
-      rem(),
-      em(),
+      remEm(),
       mixins({
         mixins: {
           light: colorSchemeMixin('light'),
