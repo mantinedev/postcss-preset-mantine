@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-mantine",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PostCSS preset for Mantine (7.0+) applications",
   "main": "preset.js",
   "dependencies": {
