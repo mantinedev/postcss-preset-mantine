@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-mantine",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "PostCSS preset for Mantine (7.0+) applications",
   "main": "preset.js",
   "peerDependencies": {
@@ -12,15 +12,8 @@
     "startijenn-rem": "^1.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "^5.59.2",
     "eslint": "^8.39.0",
-    "jest": "^29.5.0",
-    "postcss": "^8.4.21",
-    "rollup": "^3.21.4",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
+    "postcss": "^8.4.21"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

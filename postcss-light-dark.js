@@ -1,5 +1,26 @@
 const postcss = require('postcss');
 
+const re = /light-dark\(([^,]+),([^)]+)\)/;
+
+function getValue(index) {
+  function extractValue(input) {
+    const match = input.match(re);
+
+    if (match) {
+      const value = match[index];
+      const replaced = input.replace(re, value.trim());
+      return extractValue(replaced);
+    }
+
+    return input;
+  }
+
+  return extractValue;
+}
+
+const getLightValue = getValue(1);
+const getDarkValue = getValue(2);
+
 module.exports = () => {
   return {
     postcssPlugin: 'postcss-light-dark',
@@ -9,10 +30,8 @@ module.exports = () => {
         const { value, prop } = decl;
 
         if (value.includes('light-dark')) {
-          const [lightVal, darkVal] = value
-            .slice(value.indexOf('(') + 1, -1)
-            .split(',')
-            .map((val) => val.trim());
+          const lightVal = getLightValue(value);
+          const darkVal = getDarkValue(value);
 
           const lightRule = postcss.rule({
             selector: `[data-mantine-color-scheme='light'] ${decl.parent.selector}`,

@@ -48,7 +48,7 @@ function creator() {
     plugins: [
       nested(),
       remEm(),
-      // lightDark(),
+      lightDark(),
       mixins({
         mixins: {
           light: colorSchemeMixin('light'),
