@@ -1,51 +1,41 @@
 const postcss = require('postcss');
 const nested = require('postcss-nested');
-const lightDark = require('./postcss-light-dark');
+// const lightDark = require('./postcss-light-dark');
 
 const plugin = () => {
-  return (root) => {
-    root.walkDecls((decl) => {
-      const { value, prop } = decl;
+  return {
+    postcssPlugin: 'postcss-rem-em',
 
-      if (value.includes('light-dark')) {
-        const [lightVal, darkVal] = value
-          .slice(value.indexOf('(') + 1, -1)
-          .split(',')
-          .map((val) => val.trim());
+    Once(root) {
+      root.walkDecls((decl) => {
+        const value = decl.value;
+        console.log(value);
+        if (value.includes('light-dark')) {
+          const [color1, color2] = value
+            .replace(/light-dark\(/, '')
+            .replace(/\)/, '')
+            .split(',')
+            .map((s) => s.trim());
+          console.log({ color1, color2 });
 
-        const lightRule = postcss.rule({
-          selector: `[data-mantine-color-scheme='light'] ${decl.parent.selector}`,
-        });
-        const lightDecl = postcss.decl({ prop, value: lightVal });
-        lightRule.append(lightDecl);
-        root.append(lightRule);
+          // const lightRule = postcss.rule({ selector: '@mixin light' });
+          // lightRule.append(postcss.decl({ prop: 'color', value: color1 }));
+          // const darkRule = postcss.rule({ selector: '@mixin dark' });
+          // darkRule.append(postcss.decl({ prop: 'color', value: color2 }));
+          // const rule = postcss.rule();
+          // rule.append(lightRule);
+          // rule.append(darkRule);
+          // decl.parent.append(rule);
+          // decl.remove();
+        }
+      });
+    },
 
-        const darkRule = postcss.rule({
-          selector: `[data-mantine-color-scheme='dark'] ${decl.parent.selector}`,
-        });
-        const darkDecl = postcss.decl({ prop, value: darkVal });
-        darkRule.append(darkDecl);
-        root.append(darkRule);
-
-        const lightMediaQuery = postcss.atRule({
-          name: 'media',
-          params: '(prefers-color-scheme: light)',
-        });
-        const lightMediaDecl = postcss.decl({ prop, value: lightVal });
-        lightMediaQuery.append(lightMediaDecl);
-        decl.parent.insertAfter(decl, lightMediaQuery);
-
-        const darkMediaQuery = postcss.atRule({
-          name: 'media',
-          params: '(prefers-color-scheme: dark)',
-        });
-        const darkMediaDecl = postcss.decl({ prop, value: darkVal });
-        darkMediaQuery.append(darkMediaDecl);
-        decl.parent.insertAfter(decl, darkMediaQuery);
-
-        decl.remove();
-      }
-    });
+    AtRule: {
+      mixin: (atRule) => {
+        // console.log(atRule);
+      },
+    },
   };
 };
 
@@ -54,12 +44,9 @@ plugin.postcss = true;
 async function test() {
   console.log(
     (
-      await postcss([nested, lightDark]).process(
-        'a { color: light-dark(red, blue); background: light-dark(orange, pink) }',
-        {
-          from: undefined,
-        }
-      )
+      await postcss([nested, plugin]).process('a { color: light-dark(red, blue) }', {
+        from: undefined,
+      })
     ).css
   );
 }

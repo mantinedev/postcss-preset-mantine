@@ -5,7 +5,7 @@ const lightDark = require('./postcss-light-dark');
 
 function colorSchemeMixin(colorScheme) {
   return {
-    [`[data-mantine-color-scheme="${colorScheme}"] &`]: {
+    [`[data-mantine-color-scheme='${colorScheme}'] &`]: {
       '@mixin-content': {},
     },
 
@@ -48,7 +48,7 @@ function creator() {
     plugins: [
       nested(),
       remEm(),
-      lightDark(),
+      // lightDark(),
       mixins({
         mixins: {
           light: colorSchemeMixin('light'),
