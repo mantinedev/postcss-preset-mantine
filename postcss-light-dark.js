@@ -1,25 +1,43 @@
 const postcss = require('postcss');
 
-const re = /light-dark\(([^,]+),([^)]+)\)/;
+const FUNCTION = 'light-dark(';
 
-function getValue(index) {
-  function extractValue(input) {
-    const match = input.match(re);
+function splitStringAtCharacter(character, search) {
+  let characterIndex = 0;
+  let openedParentheses = 0;
 
-    if (match) {
-      const value = match[index];
-      const replaced = input.replace(re, value.trim());
-      return extractValue(replaced);
+  while (
+    characterIndex < search.length &&
+    (search[characterIndex] !== character || openedParentheses)
+  ) {
+    if (search[characterIndex] === '(') {
+      openedParentheses += 1;
     }
-
-    return input;
+    if (search[characterIndex] === ')') {
+      openedParentheses -= 1;
+    }
+    characterIndex += 1;
   }
 
-  return extractValue;
+  return [search.slice(0, characterIndex), search.slice(characterIndex + 1)];
 }
 
-const getLightValue = getValue(1);
-const getDarkValue = getValue(2);
+function getLightDarkValue(value) {
+  const [prefix, ...search] = value.split(FUNCTION);
+
+  if (!search.length) {
+    return { light: value, dark: value };
+  }
+
+  const [macro, suffix] = splitStringAtCharacter(')', search.join(FUNCTION));
+  const [light, dark] = splitStringAtCharacter(',', macro);
+
+  const parsedSuffix = getLightDarkValue(suffix);
+  return {
+    light: prefix + getLightDarkValue(light.trim()).light + parsedSuffix.light,
+    dark: prefix + getLightDarkValue(dark.trim()).dark + parsedSuffix.dark,
+  };
+}
 
 module.exports = () => {
   return {
@@ -30,8 +48,7 @@ module.exports = () => {
         const { value, prop } = decl;
 
         if (value.includes('light-dark')) {
-          const lightVal = getLightValue(value);
-          const darkVal = getDarkValue(value);
+          const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
 
           const lightRule = postcss.rule({
             selector: `[data-mantine-color-scheme='light'] ${decl.parent.selector}`,
