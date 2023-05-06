@@ -46,9 +46,9 @@ function creator() {
   return {
     postcssPlugin: 'postcss-preset-mantine',
     plugins: [
+      lightDark(),
       nested(),
       remEm(),
-      lightDark(),
       mixins({
         mixins: {
           light: colorSchemeMixin('light'),

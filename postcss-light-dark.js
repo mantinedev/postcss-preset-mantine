@@ -49,36 +49,12 @@ module.exports = () => {
 
         if (value.includes('light-dark')) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
-
-          const lightRule = postcss.rule({
-            selector: `[data-mantine-color-scheme='light'] ${decl.parent.selector}`,
-          });
-          const lightDecl = postcss.decl({ prop, value: lightVal });
-          lightRule.append(lightDecl);
-          root.append(lightRule);
-
-          const darkRule = postcss.rule({
-            selector: `[data-mantine-color-scheme='dark'] ${decl.parent.selector}`,
-          });
-          const darkDecl = postcss.decl({ prop, value: darkVal });
-          darkRule.append(darkDecl);
-          root.append(darkRule);
-
-          const lightMediaQuery = postcss.atRule({
-            name: 'media',
-            params: '(prefers-color-scheme: light)',
-          });
-          const lightMediaDecl = postcss.decl({ prop, value: lightVal });
-          lightMediaQuery.append(lightMediaDecl);
-          decl.parent.insertAfter(decl, lightMediaQuery);
-
-          const darkMediaQuery = postcss.atRule({
-            name: 'media',
-            params: '(prefers-color-scheme: dark)',
-          });
-          const darkMediaDecl = postcss.decl({ prop, value: darkVal });
-          darkMediaQuery.append(darkMediaDecl);
-          decl.parent.insertAfter(decl, darkMediaQuery);
+          const lightMixin = postcss.atRule({ name: 'mixin', params: 'light' });
+          const darkMixin = postcss.atRule({ name: 'mixin', params: 'dark' });
+          lightMixin.append(postcss.decl({ prop, value: lightVal }));
+          darkMixin.append(postcss.decl({ prop, value: darkVal }));
+          decl.parent.insertAfter(decl, lightMixin);
+          decl.parent.insertAfter(decl, darkMixin);
 
           decl.remove();
         }
