@@ -3,8 +3,14 @@ const preset = require('./preset');
 
 const input = `
 .button {
-  &[data-disabled] {
-    border-color: light-dark(red, blue);
+  border-radius: rem(16px);
+
+  @media (min-width: em(500px)) {
+    color: red
+  }
+
+  @media (min-width: rem(500px)) {
+    color: red
   }
 }
 `;

@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-mantine",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "PostCSS preset for Mantine (7.0+) applications",
   "main": "preset.js",
   "peerDependencies": {
@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "postcss-mixins": "^9.0.4",
-    "postcss-nested": "^6.0.1",
-    "startijenn-rem": "^1.1.1"
+    "postcss-nested": "^6.0.1"
   },
   "devDependencies": {
     "eslint": "^8.39.0",
