@@ -49,12 +49,10 @@ module.exports = () => {
 
         if (value.includes('light-dark')) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
-          const lightMixin = postcss.atRule({ name: 'mixin', params: 'light' });
           const darkMixin = postcss.atRule({ name: 'mixin', params: 'dark' });
-          lightMixin.append(postcss.decl({ prop, value: lightVal }));
           darkMixin.append(postcss.decl({ prop, value: darkVal }));
-          decl.parent.insertAfter(decl, lightMixin);
           decl.parent.insertAfter(decl, darkMixin);
+          decl.parent.insertAfter(decl, postcss.decl({ prop, value: lightVal }));
 
           decl.remove();
         }

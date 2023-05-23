@@ -8,12 +8,6 @@ function colorSchemeMixin(colorScheme) {
     [`[data-mantine-color-scheme='${colorScheme}'] &`]: {
       '@mixin-content': {},
     },
-
-    [`@media (prefers-color-scheme: ${colorScheme})`]: {
-      '&': {
-        '@mixin-content': {},
-      },
-    },
   };
 }
 

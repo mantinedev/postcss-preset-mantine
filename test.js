@@ -3,15 +3,7 @@ const preset = require('./preset');
 
 const input = `
 .button {
-  border-radius: rem(16px);
-
-  @media (min-width: em(500px)) {
-    color: red
-  }
-
-  @media (min-width: rem(500px)) {
-    color: red
-  }
+  background: light-dark(var(--mantine-color-red-5), var(--mantine-color-blue-9));
 }
 `;
 
