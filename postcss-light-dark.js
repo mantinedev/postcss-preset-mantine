@@ -46,8 +46,8 @@ module.exports = () => {
     Once(root) {
       root.walkDecls((decl) => {
         const { value, prop } = decl;
-
-        if (value.includes('light-dark')) {
+        const regex = /\blight-dark\b/;
+        if (regex.test(value)) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
           const darkMixin = postcss.atRule({ name: 'mixin', params: 'dark' });
           darkMixin.append(postcss.decl({ prop, value: darkVal }));
