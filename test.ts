@@ -1,5 +1,5 @@
-const postcss = require('postcss');
-const preset = require('./preset');
+import postcss from 'postcss';
+import preset from './preset';
 
 const input = `
 .button {

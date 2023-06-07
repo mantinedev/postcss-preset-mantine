@@ -11,8 +11,10 @@
     "postcss-nested": "^6.0.1"
   },
   "devDependencies": {
+    "@types/postcss-mixins": "^9.0.0",
     "eslint": "^8.39.0",
-    "postcss": "^8.4.21"
+    "postcss": "^8.4.21",
+    "typescript": "^5.1.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
