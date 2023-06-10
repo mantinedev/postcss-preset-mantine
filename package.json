@@ -5,7 +5,7 @@
   "main": "dist/preset.js",
   "types": "dist/types/preset.d.ts",
   "peerDependencies": {
-    "postcss": "^8.4.24"
+    "postcss": ">=8.0.0"
   },
   "dependencies": {
     "postcss-mixins": "^9.0.4",
