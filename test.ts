@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import preset from './preset';
+import preset from './src/preset';
 
 const input = `
 .button {

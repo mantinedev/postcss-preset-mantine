@@ -2,7 +2,6 @@ import nested from 'postcss-nested';
 import mixins from 'postcss-mixins';
 import remEm from './postcss-rem-em';
 import lightDark from './postcss-light-dark';
-import { AcceptedPlugin, Plugin, Processor } from 'postcss';
 
 function colorSchemeMixin(colorScheme: 'light' | 'dark') {
   return {
