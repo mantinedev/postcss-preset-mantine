@@ -44,7 +44,7 @@ function getLightDarkValue(value: string): GetLightDarkValueReturnType {
   };
 }
 
-export default () => {
+const plugin = () => {
   return {
     postcssPlugin: 'postcss-light-dark',
 
@@ -67,3 +67,5 @@ export default () => {
 };
 
 export const postcss = true;
+plugin.postcss = true;
+export default plugin;

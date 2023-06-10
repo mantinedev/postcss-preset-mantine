@@ -35,7 +35,7 @@ const getRegExp = (units: 'rem' | 'em') => new RegExp('(?!\\W+)' + units + '\\((
 const emRegExp = getRegExp('em');
 const remRegExp = getRegExp('rem');
 
-export default () => {
+const plugin = () => {
   return {
     postcssPlugin: 'postcss-rem-em',
 
@@ -55,3 +55,5 @@ export default () => {
 };
 
 export const postcss = true;
+plugin.postcss = true;
+export default plugin;
