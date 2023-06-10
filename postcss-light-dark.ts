@@ -1,8 +1,8 @@
-const postcss = require('postcss');
+import { atRule as postcssAtRule, decl as postcssDecl, Root } from 'postcss';
 
 const FUNCTION = 'light-dark(';
 
-function splitStringAtCharacter(character, search) {
+function splitStringAtCharacter(character: string, search: string) {
   let characterIndex = 0;
   let openedParentheses = 0;
 
@@ -22,7 +22,12 @@ function splitStringAtCharacter(character, search) {
   return [search.slice(0, characterIndex), search.slice(characterIndex + 1)];
 }
 
-function getLightDarkValue(value) {
+type GetLightDarkValueReturnType = {
+  light: string;
+  dark: string;
+};
+
+function getLightDarkValue(value: string): GetLightDarkValueReturnType {
   const [prefix, ...search] = value.split(FUNCTION);
 
   if (!search.length) {
@@ -39,20 +44,20 @@ function getLightDarkValue(value) {
   };
 }
 
-module.exports = () => {
+export default () => {
   return {
     postcssPlugin: 'postcss-light-dark',
 
-    Once(root) {
+    Once(root: Root) {
       root.walkDecls((decl) => {
         const { value, prop } = decl;
         const regex = /\blight-dark\b/;
         if (regex.test(value)) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
-          const darkMixin = postcss.atRule({ name: 'mixin', params: 'dark' });
-          darkMixin.append(postcss.decl({ prop, value: darkVal }));
-          decl.parent.insertAfter(decl, darkMixin);
-          decl.parent.insertAfter(decl, postcss.decl({ prop, value: lightVal }));
+          const darkMixin = postcssAtRule({ name: 'mixin', params: 'dark' });
+          darkMixin.append(postcssDecl({ prop, value: darkVal }));
+          decl.parent?.insertAfter(decl, darkMixin);
+          decl.parent?.insertAfter(decl, postcssDecl({ prop, value: lightVal }));
 
           decl.remove();
         }
@@ -61,4 +66,4 @@ module.exports = () => {
   };
 };
 
-module.exports.postcss = true;
+export const postcss = true;
