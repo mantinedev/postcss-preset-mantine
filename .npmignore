@@ -1,0 +1,8 @@
+.eslintrc.js
+.prettierrc.js
+tsconfig.json
+yarn.lock
+src
+node_modules
+test.ts
+.DS_Store
