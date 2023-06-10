@@ -1,4 +1,4 @@
-import { AtRule, Root } from 'postcss';
+import type { AtRule, Root } from 'postcss';
 
 function scaleRem(remValue: string) {
   return `calc(${remValue} * var(--mantine-scale))`;
@@ -35,7 +35,7 @@ const getRegExp = (units: 'rem' | 'em') => new RegExp('(?!\\W+)' + units + '\\((
 const emRegExp = getRegExp('em');
 const remRegExp = getRegExp('rem');
 
-const plugin = () => {
+module.exports = () => {
   return {
     postcssPlugin: 'postcss-rem-em',
 
@@ -54,6 +54,4 @@ const plugin = () => {
   };
 };
 
-export const postcss = true;
-plugin.postcss = true;
-export default plugin;
+module.exports.postcss = true;

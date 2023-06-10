@@ -1,7 +1,7 @@
-import nested from 'postcss-nested';
-import mixins from 'postcss-mixins';
-import remEm from './postcss-rem-em';
-import lightDark from './postcss-light-dark';
+const nested = require('postcss-nested');
+const mixins = require('postcss-mixins');
+const remEm = require('./postcss-rem-em');
+const lightDark = require('./postcss-light-dark');
 
 function colorSchemeMixin(colorScheme: 'light' | 'dark') {
   return {
@@ -36,7 +36,7 @@ const notRtlMixin = {
   },
 };
 
-const creator = () => {
+module.exports = () => {
   return {
     postcssPlugin: 'postcss-preset-mantine',
     plugins: [
@@ -56,6 +56,4 @@ const creator = () => {
   };
 };
 
-creator.postcss = true as const;
-
-export default creator;
+module.exports.postcss = true;
