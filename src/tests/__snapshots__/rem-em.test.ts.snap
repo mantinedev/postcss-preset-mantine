@@ -25,6 +25,9 @@ exports[`rem-em works inside media query 1`] = `
 @media (min-width: 20em) {
   font-size: calc(2rem * var(--mantine-scale));
 }
+@media (min-height: 15rem) {
+  font-size: 1em;
+}
 "
 `;
 

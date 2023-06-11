@@ -11,6 +11,9 @@ const mediaInput = `
 @media (min-width: em(320px)) {
   font-size: rem(32px);
 }
+@media (min-height: rem(240px)) {
+  font-size: em(16px);
+}
 `;
 
 const remEmInsideClassNameInput = `
