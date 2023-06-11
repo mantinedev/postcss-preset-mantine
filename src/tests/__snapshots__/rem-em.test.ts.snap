@@ -3,10 +3,10 @@
 exports[`rem-em doesnt process the function when name doesnt match exactly 1`] = `
 "
 .button1 {
-  color: theocalc(2rem * var(--mantine-scale));
+  color: theorem(32px);
 }
 .button2 {
-  color: po3em;
+  color: poem(48px);
 }
 "
 `;

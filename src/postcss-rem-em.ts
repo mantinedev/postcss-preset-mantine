@@ -31,7 +31,7 @@ const rem = createConverter('rem', { shouldScale: true });
 const remNoScale = createConverter('rem');
 const em = createConverter('em');
 
-const getRegExp = (units: 'rem' | 'em') => new RegExp('(?!\\W+)' + units + '\\(([^()]+)\\)', 'g');
+const getRegExp = (units: 'rem' | 'em') => new RegExp('\\b' + units + '\\(([^()]+)\\)', 'g');
 const emRegExp = getRegExp('em');
 const remRegExp = getRegExp('rem');
 
