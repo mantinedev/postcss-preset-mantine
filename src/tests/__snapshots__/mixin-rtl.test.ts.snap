@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mixin-rtl should work 1`] = `
+"
+[dir="rtl"] .demo {
+    margin-right: 1rem
+}
+  :root:not([dir="rtl"]) .demo {
+    margin-left: 1rem
+}
+"
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mixin-hover should work 1`] = `
+"
+@media (hover: hover) {
+    .demo:hover {
+    color: orange
+    }
+}
+  @media (hover: none) {
+    .demo:active {
+    color: orange
+    }
+}
+"
+`;

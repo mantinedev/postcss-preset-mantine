@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nested should work 1`] = `
+"
+.a .b {
+        color: black;
+    }
+"
+`;

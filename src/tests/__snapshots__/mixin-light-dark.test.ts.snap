@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mixin-light-dark should work 1`] = `
+"
+[data-mantine-color-scheme='light'] .demo {
+    color: red
+}
+  [data-mantine-color-scheme='dark'] .demo {
+    color: blue
+}
+"
+`;
