@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rem-em doesnt process the function when name doesnt match exactly 1`] = `
+"
+.button1 {
+  color: theocalc(2rem * var(--mantine-scale));
+}
+.button2 {
+  color: po3em;
+}
+"
+`;
+
+exports[`rem-em should work 1`] = `
+"
+.demo {
+  font-size: calc(1rem * var(--mantine-scale));
+  height: 2.5em;
+}
+"
+`;
+
+exports[`rem-em works inside media query 1`] = `
+"
+@media (min-width: 20em) {
+  font-size: calc(2rem * var(--mantine-scale));
+}
+"
+`;
+
+exports[`rem-em works when rem/em is inside the class name 1`] = `
+"
+.button-rem {
+  color: red;
+}
+.button-em {
+  color: red;
+}
+"
+`;
