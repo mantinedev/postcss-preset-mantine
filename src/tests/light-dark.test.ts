@@ -1,5 +1,4 @@
-const postcss = require('postcss');
-const preset = require('../preset');
+const { testTransform } = require('./utils');
 
 const baseInput = `
 .button {
@@ -39,27 +38,27 @@ const commasInput = `
 
 describe('light-dark', () => {
   it('should work', async () => {
-    const res = await postcss([preset]).process(baseInput);
+    const res = await testTransform(baseInput);
     expect(res.css).toMatchSnapshot();
   });
 
   it('works inside media query', async () => {
-    const res = await postcss([preset]).process(mediaInput);
+    const res = await testTransform(mediaInput);
     expect(res.css).toMatchSnapshot();
   });
 
   it('works when light-dark is inside the class name', async () => {
-    const res = await postcss([preset]).process(lightDarkInsideClassNameInput);
+    const res = await testTransform(lightDarkInsideClassNameInput);
     expect(res.css).toMatchSnapshot();
   });
 
   it('doesnt process the function when name doesnt match exactly', async () => {
-    const res = await postcss([preset]).process(lightDarkInsideFunctionInput);
+    const res = await testTransform(lightDarkInsideFunctionInput);
     expect(res.css).toMatchSnapshot();
   });
 
   it('works when there are commas in the value', async () => {
-    const res = await postcss([preset]).process(commasInput);
+    const res = await testTransform(commasInput);
     expect(res.css).toMatchSnapshot();
   });
 });
