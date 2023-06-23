@@ -1,8 +1,6 @@
-const postcss = require('postcss');
+import postcss from 'postcss';
 const preset = require('../preset');
 
-module.exports = {};
-
-module.exports.testTransform = (input: string) => {
+export function testTransform(input: string) {
   return postcss([preset]).process(input, { from: undefined });
-};
+}

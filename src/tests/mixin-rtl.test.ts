@@ -1,4 +1,4 @@
-const { testTransform } = require('./utils');
+import { testTransform } from './utils';
 
 const baseInput = `
 .demo {
