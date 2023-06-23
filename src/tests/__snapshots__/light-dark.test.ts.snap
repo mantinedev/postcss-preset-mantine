@@ -1,20 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`light-dark doesnt process the function when name doesnt match exactly 1`] = `
+exports[`light-dark does not process the function when name does not match exactly 1`] = `
 "
 .button {
   color: highlight-dark(red);
-}
-"
-`;
-
-exports[`light-dark should work 1`] = `
-"
-.button {
-  background: var(--mantine-color-red-5);
-}
-  [data-mantine-color-scheme='dark'] .button {
-  background: var(--mantine-color-blue-9);
 }
 "
 `;
@@ -55,6 +44,17 @@ exports[`light-dark works when there are commas in the value 1`] = `
 }
   [data-mantine-color-scheme='dark'] .button {
   color: rgba(142 142 142 / 0.2);
+}
+"
+`;
+
+exports[`light-dark works with base input 1`] = `
+"
+.button {
+  background: var(--mantine-color-red-5);
+}
+  [data-mantine-color-scheme='dark'] .button {
+  background: var(--mantine-color-blue-9);
 }
 "
 `;

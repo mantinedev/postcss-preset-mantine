@@ -13,7 +13,7 @@ const baseInput = `
 `;
 
 describe('mixin-light-dark', () => {
-  it('should work', async () => {
+  it('transforms light and dark mixins correctly', async () => {
     const res = await testTransform(baseInput);
     expect(res.css).toMatchSnapshot();
   });

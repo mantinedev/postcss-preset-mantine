@@ -35,7 +35,7 @@ const remEmInsideFunctionInput = `
 `;
 
 describe('rem-em', () => {
-  it('should work', async () => {
+  it('transforms base case correctly', async () => {
     const res = await testTransform(baseInput);
     expect(res.css).toMatchSnapshot();
   });
@@ -50,7 +50,7 @@ describe('rem-em', () => {
     expect(res.css).toMatchSnapshot();
   });
 
-  it('doesnt process the function when name doesnt match exactly', async () => {
+  it('does not process the function when name does not match exactly', async () => {
     const res = await testTransform(remEmInsideFunctionInput);
     expect(res.css).toMatchSnapshot();
   });

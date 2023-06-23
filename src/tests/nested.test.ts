@@ -8,9 +8,8 @@ const baseInput = `
 }
 `;
 
-// We don't have to test all functionality of postcss-nested, just that it's included
 describe('nested', () => {
-  it('should work', async () => {
+  it('it transforms nested rules correctly', async () => {
     const res = await testTransform(baseInput);
     expect(res.css).toMatchSnapshot();
   });

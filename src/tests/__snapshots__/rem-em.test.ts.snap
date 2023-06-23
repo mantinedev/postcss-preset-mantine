@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rem-em doesnt process the function when name doesnt match exactly 1`] = `
+exports[`rem-em does not process the function when name does not match exactly 1`] = `
 "
 .button1 {
   color: theorem(32px);
@@ -11,7 +11,7 @@ exports[`rem-em doesnt process the function when name doesnt match exactly 1`] =
 "
 `;
 
-exports[`rem-em should work 1`] = `
+exports[`rem-em transforms base case correctly 1`] = `
 "
 .demo {
   font-size: calc(1rem * var(--mantine-scale));

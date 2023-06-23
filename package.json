@@ -31,7 +31,7 @@
     "format": "prettier src",
     "format:check": "prettier --check src",
     "typecheck": "tsc --noEmit",
-    "test": "jest",
+    "jest": "jest",
     "prepublish": "yarn test && yarn build"
   },
   "repository": {
