@@ -1,4 +1,4 @@
-const { testTransform } = require('./utils');
+import { testTransform } from './utils';
 
 const baseInput = `
 .demo {
@@ -13,7 +13,7 @@ const baseInput = `
 `;
 
 describe('mixin-rtl', () => {
-  it('should work', async () => {
+  it('transforms rtl mixins correctly', async () => {
     const res = await testTransform(baseInput);
     expect(res.css).toMatchSnapshot();
   });

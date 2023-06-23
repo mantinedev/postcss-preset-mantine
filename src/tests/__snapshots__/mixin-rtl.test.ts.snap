@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mixin-rtl should work 1`] = `
+exports[`mixin-rtl transforms rtl mixins correctly 1`] = `
 "
 [dir="rtl"] .demo {
     margin-right: 1rem

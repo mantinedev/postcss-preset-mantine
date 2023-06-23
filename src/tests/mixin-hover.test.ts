@@ -1,4 +1,4 @@
-const { testTransform } = require('./utils');
+import { testTransform } from './utils';
 
 const baseInput = `
 .demo {
@@ -9,7 +9,7 @@ const baseInput = `
 `;
 
 describe('mixin-hover', () => {
-  it('should work', async () => {
+  it('transforms hover mixin correctly', async () => {
     const res = await testTransform(baseInput);
     expect(res.css).toMatchSnapshot();
   });

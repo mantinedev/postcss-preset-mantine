@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mixin-light-dark should work 1`] = `
+exports[`mixin-light-dark transforms light and dark mixins correctly 1`] = `
 "
 [data-mantine-color-scheme='light'] .demo {
     color: red

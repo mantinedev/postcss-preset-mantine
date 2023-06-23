@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mixin-hover should work 1`] = `
+exports[`mixin-hover transforms hover mixin correctly 1`] = `
 "
 @media (hover: hover) {
     .demo:hover {
