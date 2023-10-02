@@ -1,4 +1,4 @@
-import { atRule as postcssAtRule, decl as postcssDecl, Root } from 'postcss';
+import { atRule as postcssAtRule, Root } from 'postcss';
 
 const FUNCTION = 'light-dark(';
 
@@ -55,9 +55,9 @@ module.exports = () => {
         if (regex.test(value)) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
           const darkMixin = postcssAtRule({ name: 'mixin', params: 'dark' });
-          darkMixin.append(postcssDecl({ prop, value: darkVal }));
+          darkMixin.append(decl.clone({ value: darkVal }));
           decl.parent?.insertAfter(decl, darkMixin);
-          decl.parent?.insertAfter(decl, postcssDecl({ prop, value: lightVal }));
+          decl.parent?.insertAfter(decl, decl.clone({ value: lightVal }));
 
           decl.remove();
         }
