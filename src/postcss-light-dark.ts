@@ -50,7 +50,7 @@ module.exports = () => {
 
     Once(root: Root) {
       root.walkDecls((decl) => {
-        const { value, prop } = decl;
+        const { value } = decl;
         const regex = /\blight-dark\b/;
         if (regex.test(value)) {
           const { light: lightVal, dark: darkVal } = getLightDarkValue(value);
