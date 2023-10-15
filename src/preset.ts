@@ -11,6 +11,14 @@ function colorSchemeMixin(colorScheme: 'light' | 'dark') {
   };
 }
 
+function rootColorSchemeMixin(colorScheme: 'light' | 'dark') {
+  return {
+    [`&[data-mantine-color-scheme='${colorScheme}']`]: {
+      '@mixin-content': {},
+    },
+  };
+}
+
 const hoverMixin = {
   '@media (hover: hover)': {
     '&:hover': {
@@ -30,8 +38,20 @@ const rtlMixin = {
   },
 };
 
+const ltrMixin = {
+  '[dir="ltr"] &': {
+    '@mixin-content': {},
+  },
+};
+
 const notRtlMixin = {
   ':root:not([dir="rtl"]) &': {
+    '@mixin-content': {},
+  },
+};
+
+const notLtrMixin = {
+  ':root:not([dir="ltr"]) &': {
     '@mixin-content': {},
   },
 };
@@ -47,9 +67,13 @@ module.exports = () => {
         mixins: {
           light: colorSchemeMixin('light'),
           dark: colorSchemeMixin('dark'),
+          'light-root': rootColorSchemeMixin('light'),
+          'dark-root': rootColorSchemeMixin('dark'),
           hover: hoverMixin,
           rtl: rtlMixin,
+          ltr: ltrMixin,
           'not-rtl': notRtlMixin,
+          'not-ltr': notLtrMixin,
         },
       }),
     ],
