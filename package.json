@@ -1,6 +1,6 @@
 {
   "name": "postcss-preset-mantine",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "description": "PostCSS preset for Mantine (7.0+) applications",
   "main": "dist/preset.js",
   "types": "dist/index.d.ts",
