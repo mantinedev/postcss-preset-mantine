@@ -20,6 +20,14 @@ exports[`rem-em transforms base case correctly 1`] = `
 "
 `;
 
+exports[`rem-em transforms space separated values correctly 1`] = `
+"
+.demo {
+  padding: calc(1rem * var(--mantine-scale)) calc(2rem * var(--mantine-scale));
+}
+"
+`;
+
 exports[`rem-em works inside media query 1`] = `
 "
 @media (min-width: 20em) {

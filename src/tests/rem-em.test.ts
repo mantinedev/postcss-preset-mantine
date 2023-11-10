@@ -7,6 +7,12 @@ const baseInput = `
 }
 `;
 
+const spaceSeparatedInput = `
+.demo {
+  padding: rem(16px 32px);
+}
+`;
+
 const mediaInput = `
 @media (min-width: em(320px)) {
   font-size: rem(32px);
@@ -37,6 +43,11 @@ const remEmInsideFunctionInput = `
 describe('rem-em', () => {
   it('transforms base case correctly', async () => {
     const res = await testTransform(baseInput);
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('transforms space separated values correctly', async () => {
+    const res = await testTransform(spaceSeparatedInput);
     expect(res.css).toMatchSnapshot();
   });
 
