@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`larger-than it transforms larger-than mixin correctly 1`] = `
+"
+@media (min-width: 20em) {
+.a {
+    background: red
+}
+}
+"
+`;
+
+exports[`smaller-than it transforms smaller-than mixin correctly 1`] = `
+"
+@media (max-width: 19.99375em) {
+.a {
+    background: red
+}
+}
+"
+`;

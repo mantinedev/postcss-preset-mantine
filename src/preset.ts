@@ -2,6 +2,7 @@ const nested = require('postcss-nested');
 const mixins = require('postcss-mixins');
 const remEm = require('./postcss-rem-em');
 const lightDark = require('./postcss-light-dark');
+const converters = require('./converters');
 
 function colorSchemeMixin(colorScheme: 'light' | 'dark') {
   return {
@@ -56,6 +57,18 @@ const notLtrMixin = {
   },
 };
 
+const smallerThanMixin = (_mixin: string, breakpoint: string) => ({
+  [`@media (max-width: ${converters.em(converters.px(breakpoint) - 0.1)})`]: {
+    '@mixin-content': {},
+  },
+});
+
+const largerThanMixin = (_mixin: string, breakpoint: string) => ({
+  [`@media (min-width: ${converters.em(breakpoint)})`]: {
+    '@mixin-content': {},
+  },
+});
+
 module.exports = () => {
   return {
     postcssPlugin: 'postcss-preset-mantine',
@@ -74,6 +87,8 @@ module.exports = () => {
           ltr: ltrMixin,
           'not-rtl': notRtlMixin,
           'not-ltr': notLtrMixin,
+          'smaller-than': smallerThanMixin,
+          'larger-than': largerThanMixin,
         },
       }),
     ],
