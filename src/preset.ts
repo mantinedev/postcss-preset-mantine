@@ -1,6 +1,7 @@
 const nested = require('postcss-nested');
 const mixins = require('postcss-mixins');
 const remEm = require('./postcss-rem-em');
+const colorMixAlpha = require('./postcss-color-mix-alpha');
 const lightDark = require('./postcss-light-dark');
 const converters = require('./converters');
 
@@ -75,6 +76,7 @@ module.exports = () => {
     plugins: [
       lightDark(),
       nested(),
+      colorMixAlpha(),
       remEm(),
       mixins({
         mixins: {
