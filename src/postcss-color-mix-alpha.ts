@@ -41,14 +41,12 @@ module.exports = () => {
     postcssPlugin: 'postcss-color-mix-alpha',
 
     Once(root: Root) {
-      root.replaceValues(colorValueRegexp, { fast: `alpha(` }, (_, values: string) => {
-        console.log('value', values);
-        return getMixedColor(values);
-      });
-      root.replaceValues(varRegexp, { fast: `alpha(` }, (_, values: string) => {
-        console.log('var', values);
-        return getMixedColor(values);
-      });
+      root.replaceValues(colorValueRegexp, { fast: `alpha(` }, (_, values: string) =>
+        getMixedColor(values)
+      );
+      root.replaceValues(varRegexp, { fast: `alpha(` }, (_, values: string) =>
+        getMixedColor(values)
+      );
     },
   };
 };
