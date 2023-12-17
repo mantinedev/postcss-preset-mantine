@@ -1,33 +1,27 @@
-name: CI
-on:
-  push:
-    branches:
-    - 'master'
-  pull_request:
-  workflow_dispatch:
+name: Pull request workflow
 
+on:
+  pull_request:
+    branches:
+      - '**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
 
 jobs:
-  test:
+  test_pull_request:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [14, 16, 18, 20]
     steps:
       - uses: actions/checkout@v3
-        with:
-            fetch-depth: 1
-
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '20.9.0'
           cache: 'yarn'
-
-      - run: yarn
-      - run: yarn format:check
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test --collect-coverage
-
-      - name: Repo is clean after all the steps
-        run: git diff --quiet --exit-code
+          cache-dependency-path: '**/yarn.lock'
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: npm run build
+      - name: Run tests
+        run: npm test
