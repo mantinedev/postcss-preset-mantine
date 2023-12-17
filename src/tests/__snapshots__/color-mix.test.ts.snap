@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`color-mix correctly replaces alpha function 1`] = `
+"
+.demo {
+  background: color-mix(in srgb, #f00, transparent 50%);
+  border: calc(0.0625rem * var(--mantine-scale)) solid color-mix(in srgb, var(--mantine-color-gray-4), transparent 90%);
+}
+"
+`;
+
+exports[`color-mix correctly replaces darken function 1`] = `
+"
+.demo {
+  background: color-mix(in srgb, #f00, black 50%);
+  border: calc(0.0625rem * var(--mantine-scale)) solid color-mix(in srgb, var(--mantine-color-gray-4), black 10%);
+}
+"
+`;
+
+exports[`color-mix correctly replaces lighten function 1`] = `
+"
+.demo {
+  background: color-mix(in srgb, #f00, white 50%);
+  border: calc(0.0625rem * var(--mantine-scale)) solid color-mix(in srgb, var(--mantine-color-gray-4), white 10%);
+}
+"
+`;

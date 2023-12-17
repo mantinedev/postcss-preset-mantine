@@ -1,7 +1,7 @@
 const nested = require('postcss-nested');
 const mixins = require('postcss-mixins');
 const remEm = require('./postcss-rem-em');
-const colorMixAlpha = require('./postcss-color-mix-alpha');
+const colorMixAlpha = require('./postcss-color-mix');
 const lightDark = require('./postcss-light-dark');
 const converters = require('./converters');
 
