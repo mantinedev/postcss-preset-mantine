@@ -36,7 +36,7 @@
     "version-next": "^1.0.2"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.json && echo 'declare module \"postcss-preset-mantine\";' > dist/index.d.ts",
+    "build": "tsc --project tsconfig.build.json && echo 'declare module \"postcss-preset-mantine\";' > dist/index.d.ts",
     "lint": "eslint src --cache",
     "format": "prettier src",
     "format:check": "prettier --check src",
