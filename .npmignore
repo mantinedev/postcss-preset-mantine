@@ -5,6 +5,7 @@ tsconfig.json
 yarn.lock
 src
 tests
+scripts
 node_modules
 test.ts
 .DS_Store

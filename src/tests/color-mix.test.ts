@@ -21,6 +21,13 @@ const darkenInput = `
 }
 `;
 
+const percentageInput = `
+.demo {
+  background: lighten(#f00, 50%);
+  border: rem(1px) solid alpha(var(--mantine-color-gray-4), 10%);
+}
+`;
+
 describe('color-mix', () => {
   it('correctly replaces alpha function', async () => {
     const res = await testTransform(alphaInput);
@@ -34,6 +41,11 @@ describe('color-mix', () => {
 
   it('correctly replaces darken function', async () => {
     const res = await testTransform(darkenInput);
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('correctly replaces percentage values', async () => {
+    const res = await testTransform(percentageInput);
     expect(res.css).toMatchSnapshot();
   });
 });

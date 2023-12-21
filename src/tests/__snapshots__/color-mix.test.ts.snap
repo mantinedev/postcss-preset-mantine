@@ -26,3 +26,12 @@ exports[`color-mix correctly replaces lighten function 1`] = `
 }
 "
 `;
+
+exports[`color-mix correctly replaces percentage values 1`] = `
+"
+.demo {
+  background: color-mix(in srgb, #f00, white 50%);
+  border: calc(0.0625rem * var(--mantine-scale)) solid color-mix(in srgb, var(--mantine-color-gray-4), transparent 90%);
+}
+"
+`;

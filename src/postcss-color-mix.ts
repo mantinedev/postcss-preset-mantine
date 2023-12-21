@@ -23,7 +23,10 @@ function getParsedColor(input: unknown) {
     return null;
   }
 
-  const payload = Number(color.slice(lastCommaIndex + 1));
+  const rawPayload = color.slice(lastCommaIndex + 1).trim();
+  const payload = rawPayload.endsWith('%')
+    ? Number(rawPayload.slice(0, -1)) / 100
+    : Number(color.slice(lastCommaIndex + 1));
 
   if (Number.isNaN(payload)) {
     return null;
