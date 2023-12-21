@@ -2,7 +2,6 @@
   "compilerOptions": {
     "lib": ["es2018", "dom"],
     "outDir": "./dist",
-    "rootDir": "./src",
     "target": "esnext",
     "module": "CommonJS",
     "moduleResolution": "node",
@@ -10,5 +9,6 @@
     "esModuleInterop": true,
     "declaration": false
   },
+  "include": ["./scripts", "./src"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/tests/**"]
 }
