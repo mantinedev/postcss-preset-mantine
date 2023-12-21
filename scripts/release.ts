@@ -6,7 +6,7 @@ import open from 'open';
 import githubRelease from 'new-github-release-url';
 import SimpleGit from 'simple-git';
 import { hideBin } from 'yargs/helpers';
-import execa from 'execa';
+import { execa } from 'execa';
 import signale from 'signale';
 import { getNextVersion, VersionStage, VersionIncrement } from 'version-next';
 import { run } from './run';
