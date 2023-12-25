@@ -10,3 +10,36 @@ exports[`mixin-light-dark transforms light and dark mixins correctly 1`] = `
 }
 "
 `;
+
+exports[`mixin-light-dark transforms light-root and dark-root mixins correctly 1`] = `
+"
+:root[data-mantine-color-scheme='light'] {
+    color: red
+}
+  :root[data-mantine-color-scheme='dark'] {
+    color: blue
+}
+"
+`;
+
+exports[`mixin-light-dark transforms where-light and where-dark mixins correctly 1`] = `
+"
+:where([data-mantine-color-scheme='light']) .demo {
+    color: red
+}
+  :where([data-mantine-color-scheme='dark']) .demo {
+    color: blue
+}
+"
+`;
+
+exports[`mixin-light-dark transforms where-light-root and where-dark-root mixins correctly 1`] = `
+"
+:root:where(:root[data-mantine-color-scheme='light']) {
+    color: red
+}
+  :root:where(:root[data-mantine-color-scheme='dark']) {
+    color: blue
+}
+"
+`;

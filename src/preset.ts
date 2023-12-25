@@ -6,7 +6,15 @@ const lightDark = require('./postcss-light-dark');
 const converters = require('./converters');
 const theme = require('./postcss-mantine-theme');
 
-function colorSchemeMixin(colorScheme: 'light' | 'dark') {
+function colorSchemeMixin(colorScheme: 'light' | 'dark', type: 'where' | 'default' = 'default') {
+  if (type === 'where') {
+    return {
+      [`:where([data-mantine-color-scheme='${colorScheme}']) &`]: {
+        '@mixin-content': {},
+      },
+    };
+  }
+
   return {
     [`[data-mantine-color-scheme='${colorScheme}'] &`]: {
       '@mixin-content': {},
@@ -14,7 +22,18 @@ function colorSchemeMixin(colorScheme: 'light' | 'dark') {
   };
 }
 
-function rootColorSchemeMixin(colorScheme: 'light' | 'dark') {
+function rootColorSchemeMixin(
+  colorScheme: 'light' | 'dark',
+  type: 'where' | 'default' = 'default'
+) {
+  if (type === 'where') {
+    return {
+      [`&:where(:root[data-mantine-color-scheme='${colorScheme}'])`]: {
+        '@mixin-content': {},
+      },
+    };
+  }
+
   return {
     [`&[data-mantine-color-scheme='${colorScheme}']`]: {
       '@mixin-content': {},
@@ -86,6 +105,10 @@ module.exports = () => {
           dark: colorSchemeMixin('dark'),
           'light-root': rootColorSchemeMixin('light'),
           'dark-root': rootColorSchemeMixin('dark'),
+          'where-light': colorSchemeMixin('light', 'where'),
+          'where-dark': colorSchemeMixin('dark', 'where'),
+          'where-light-root': rootColorSchemeMixin('light', 'where'),
+          'where-dark-root': rootColorSchemeMixin('dark', 'where'),
           hover: hoverMixin,
           rtl: rtlMixin,
           ltr: ltrMixin,

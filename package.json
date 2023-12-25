@@ -38,12 +38,12 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json && echo 'declare module \"postcss-preset-mantine\";' > dist/index.d.ts",
     "lint": "eslint src --cache",
-    "format": "prettier src",
-    "format:check": "prettier --check src",
+    "prettier:check": "prettier --check src",
     "typecheck": "tsc --noEmit",
     "jest": "jest",
+    "jest:update-snapshots": "jest --updateSnapshot",
     "prepublish": "yarn test && yarn build",
-    "test": "npm run lint && npm run format:check && npm run typecheck && npm run jest",
+    "test": "npm run lint && npm run prettier:check && npm run typecheck && npm run jest",
     "clean": "rm -rf dist",
     "release": "esno scripts/release"
   },
