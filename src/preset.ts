@@ -78,6 +78,30 @@ const notLtrMixin = {
   },
 };
 
+const rtlWhereMixin = {
+  ':where([dir="rtl"]) &': {
+    '@mixin-content': {},
+  },
+};
+
+const ltrWhereMixin = {
+  ':where([dir="ltr"]) &': {
+    '@mixin-content': {},
+  },
+};
+
+const notRtlWhereMixin = {
+  ':where([dir="ltr"]) &': {
+    '@mixin-content': {},
+  },
+};
+
+const notLtrWhereMixin = {
+  ':where([dir="ltr"]) &': {
+    '@mixin-content': {},
+  },
+};
+
 const smallerThanMixin = (_mixin: string, breakpoint: string) => ({
   [`@media (max-width: ${converters.em(converters.px(breakpoint) - 0.1)})`]: {
     '@mixin-content': {},
@@ -114,6 +138,10 @@ module.exports = () => {
           ltr: ltrMixin,
           'not-rtl': notRtlMixin,
           'not-ltr': notLtrMixin,
+          'where-rtl': rtlWhereMixin,
+          'where-ltr': ltrWhereMixin,
+          'where-not-rtl': notRtlWhereMixin,
+          'where-not-ltr': notLtrWhereMixin,
           'smaller-than': smallerThanMixin,
           'larger-than': largerThanMixin,
         },

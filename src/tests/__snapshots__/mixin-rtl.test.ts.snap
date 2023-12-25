@@ -10,3 +10,14 @@ exports[`mixin-rtl transforms rtl mixins correctly 1`] = `
 }
 "
 `;
+
+exports[`mixin-rtl transforms where-rtl mixins correctly 1`] = `
+"
+:where([dir="rtl"]) .demo {
+    margin-right: 1rem
+}
+  :where([dir="ltr"]) .demo {
+    margin-left: 1rem
+}
+"
+`;
