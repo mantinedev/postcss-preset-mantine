@@ -14,3 +14,18 @@ exports[`mixin-hover transforms hover mixin correctly 1`] = `
 }
 "
 `;
+
+exports[`mixin-hover transforms where-hover mixin correctly 1`] = `
+"
+@media (hover: hover) {
+    .demo:where(:hover) {
+    color: orange
+    }
+}
+  @media (hover: none) {
+    .demo:where(:active) {
+    color: orange
+    }
+}
+"
+`;

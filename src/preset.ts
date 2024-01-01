@@ -54,6 +54,19 @@ const hoverMixin = {
   },
 };
 
+const hoverWhereMixin = {
+  '@media (hover: hover)': {
+    '&:where(:hover)': {
+      '@mixin-content': {},
+    },
+  },
+  '@media (hover: none)': {
+    '&:where(:active)': {
+      '@mixin-content': {},
+    },
+  },
+};
+
 const rtlMixin = {
   '[dir="rtl"] &': {
     '@mixin-content': {},
@@ -134,6 +147,7 @@ module.exports = () => {
           'where-light-root': rootColorSchemeMixin('light', 'where'),
           'where-dark-root': rootColorSchemeMixin('dark', 'where'),
           hover: hoverMixin,
+          'where-hover': hoverWhereMixin,
           rtl: rtlMixin,
           ltr: ltrMixin,
           'not-rtl': notRtlMixin,
