@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@container transforms em 1`] = `
+"
+@container (min-width: 2em) {
+.card {
+    background: red
+}
+  }
+"
+`;
+
+exports[`@container transforms rem 1`] = `
+"
+@container (min-width: 2rem) {
+.card {
+    background: red
+}
+  }
+"
+`;

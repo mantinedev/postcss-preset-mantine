@@ -22,6 +22,13 @@ module.exports = () => {
           )
           .replace(emRegExp, (value) => converters.em(value.replace(/em\((.*?)\)/g, '$1')));
       },
+      container: (atRule: AtRule) => {
+        atRule.params = atRule.params
+          .replace(remRegExp, (value) =>
+            converters.remNoScale(value.replace(/rem\((.*?)\)/g, '$1'))
+          )
+          .replace(emRegExp, (value) => converters.em(value.replace(/em\((.*?)\)/g, '$1')));
+      },
     },
   };
 };
