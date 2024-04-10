@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auto-rem it transforms input with rem function correctly 1`] = `
+"
+.demo {
+  font-size: calc(1rem * var(--mantine-scale));
+  border: calc(0.0625rem * var(--mantine-scale)) solid red;
+  padding: calc(1rem * var(--mantine-scale));
+}
+"
+`;
+
+exports[`auto-rem it transforms media query correctly 1`] = `
+"
+@media (min-width: 320px) {
+.demo {
+    font-size: calc(2rem * var(--mantine-scale))
+}
+  }
+"
+`;
+
+exports[`auto-rem it transforms px to rem values correctly 1`] = `
+"
+.demo {
+  font-size: calc(1rem * var(--mantine-scale));
+  height: calc(2.5rem * var(--mantine-scale));
+  padding: calc(0.625rem * var(--mantine-scale)) calc(3.125rem * var(--mantine-scale)) calc(1.25rem * var(--mantine-scale)) calc(1.875rem * var(--mantine-scale));
+  background: red;
+  border: calc(0.0625rem * var(--mantine-scale)) solid black;
+  box-shadow: 0 0 calc(0.625rem * var(--mantine-scale)) calc(0.3125rem * var(--mantine-scale)) rgba(0, 0, 0, 0.5);
+}
+"
+`;

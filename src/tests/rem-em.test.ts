@@ -13,6 +13,12 @@ const spaceSeparatedInput = `
 }
 `;
 
+const spaceSeparatedWithNonPxValuesInput = `
+.demo {
+  border: rem(16px solid red);
+}
+`;
+
 const mediaInput = `
 @media (min-width: em(320px)) {
   font-size: rem(32px);
@@ -63,6 +69,11 @@ describe('rem-em', () => {
 
   it('does not process the function when name does not match exactly', async () => {
     const res = await testTransform(remEmInsideFunctionInput);
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('works with space separated values with non-px values', async () => {
+    const res = await testTransform(spaceSeparatedWithNonPxValuesInput);
     expect(res.css).toMatchSnapshot();
   });
 });

@@ -49,3 +49,11 @@ exports[`rem-em works when rem/em is inside the class name 1`] = `
 }
 "
 `;
+
+exports[`rem-em works with space separated values with non-px values 1`] = `
+"
+.demo {
+  border: calc(1rem * var(--mantine-scale)) solid red;
+}
+"
+`;
