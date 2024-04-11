@@ -1,11 +1,15 @@
 function scaleRem(remValue: string) {
+  if (remValue === '0rem') {
+    return '0rem';
+  }
+
   return `calc(${remValue} * var(--mantine-scale))`;
 }
 
 function createConverter(units: string, { shouldScale = false } = {}) {
   function converter(value: unknown): string {
     if (value === 0 || value === '0') {
-      return '0';
+      return `0${units}`;
     }
 
     if (typeof value === 'number') {
@@ -14,8 +18,15 @@ function createConverter(units: string, { shouldScale = false } = {}) {
     }
 
     if (typeof value === 'string') {
-      if (value.startsWith('calc(') || value.startsWith('var(') || value.startsWith('clamp(')) {
+      if (value.startsWith('calc(') || value.startsWith('clamp(') || value.includes('rgba(')) {
         return value;
+      }
+
+      if (value.includes(',')) {
+        return value
+          .split(',')
+          .map((val) => converter(val))
+          .join(',');
       }
 
       if (value.includes(' ')) {

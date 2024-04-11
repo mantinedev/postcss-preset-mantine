@@ -27,6 +27,20 @@ const mediaInput = `
 }
 `;
 
+const rgbaInput = `
+.demo {
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0 0 0 5px inset,
+    rgb(0, 0, 0, 0.15) 0 0 3px inset;
+}
+`;
+
+const comaSeparatedInput = `
+.demo {
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+}
+`;
+
 describe('auto-rem', () => {
   it('it transforms px to rem values correctly', async () => {
     const res = await testTransform(baseInput, { autoRem: true });
@@ -40,6 +54,16 @@ describe('auto-rem', () => {
 
   it('it transforms media query correctly', async () => {
     const res = await testTransform(mediaInput, { autoRem: true });
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('does not transform strings with rgba', async () => {
+    const res = await testTransform(rgbaInput, { autoRem: true });
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('transforms coma separated values correctly', async () => {
+    const res = await testTransform(comaSeparatedInput, { autoRem: true });
     expect(res.css).toMatchSnapshot();
   });
 });

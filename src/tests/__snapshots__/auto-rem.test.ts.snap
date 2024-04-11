@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`auto-rem does not transform strings with rgba 1`] = `
+"
+.demo {
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0 0 0 5px inset,
+    rgb(0, 0, 0, 0.15) 0 0 3px inset;
+}
+"
+`;
+
 exports[`auto-rem it transforms input with rem function correctly 1`] = `
 "
 .demo {
@@ -28,7 +38,15 @@ exports[`auto-rem it transforms px to rem values correctly 1`] = `
   padding: calc(0.625rem * var(--mantine-scale)) calc(3.125rem * var(--mantine-scale)) calc(1.25rem * var(--mantine-scale)) calc(1.875rem * var(--mantine-scale));
   background: red;
   border: calc(0.0625rem * var(--mantine-scale)) solid black;
-  box-shadow: 0 0 calc(0.625rem * var(--mantine-scale)) calc(0.3125rem * var(--mantine-scale)) rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+"
+`;
+
+exports[`auto-rem transforms coma separated values correctly 1`] = `
+"
+.demo {
+  background-position: 0rem 0rem,0rem 0rem calc(0.25rem * var(--mantine-scale)),0rem calc(0.25rem * var(--mantine-scale)) calc(-0.25rem * var(--mantine-scale)),0rem calc(-0.25rem * var(--mantine-scale)) 0rem;
 }
 "
 `;
