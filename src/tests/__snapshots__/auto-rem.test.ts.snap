@@ -10,6 +10,14 @@ exports[`auto-rem does not transform strings with rgba 1`] = `
 "
 `;
 
+exports[`auto-rem does not transform values without units 1`] = `
+"
+.demo {
+  flex: 1 1 calc(7.5rem * var(--mantine-scale))
+}
+"
+`;
+
 exports[`auto-rem it transforms input with rem function correctly 1`] = `
 "
 .demo {
@@ -46,7 +54,7 @@ exports[`auto-rem it transforms px to rem values correctly 1`] = `
 exports[`auto-rem transforms coma separated values correctly 1`] = `
 "
 .demo {
-  background-position: 0rem 0rem,0rem 0rem calc(0.25rem * var(--mantine-scale)),0rem calc(0.25rem * var(--mantine-scale)) calc(-0.25rem * var(--mantine-scale)),0rem calc(-0.25rem * var(--mantine-scale)) 0rem;
+  background-position: 0rem 0rem, 0rem calc(0.25rem * var(--mantine-scale)), calc(0.25rem * var(--mantine-scale)) calc(-0.25rem * var(--mantine-scale)), calc(-0.25rem * var(--mantine-scale)) 0rem;
 }
 "
 `;

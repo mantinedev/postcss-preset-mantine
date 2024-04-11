@@ -6,7 +6,7 @@ function scaleRem(remValue: string) {
   return `calc(${remValue} * var(--mantine-scale))`;
 }
 
-function createConverter(units: string, { shouldScale = false } = {}) {
+function createConverter(units: string, { shouldScale = false, transformUnitLess = true } = {}) {
   function converter(value: unknown): string {
     if (value === 0 || value === '0') {
       return `0${units}`;
@@ -41,6 +41,11 @@ function createConverter(units: string, { shouldScale = false } = {}) {
       }
 
       const replaced = value.replace('px', '');
+
+      if (replaced === value && !transformUnitLess) {
+        return value;
+      }
+
       if (!Number.isNaN(Number(replaced))) {
         const val = `${Number(replaced) / 16}${units}`;
         return shouldScale ? scaleRem(val) : val;
@@ -54,6 +59,7 @@ function createConverter(units: string, { shouldScale = false } = {}) {
 }
 
 const rem = createConverter('rem', { shouldScale: true });
+const remStrict = createConverter('rem', { shouldScale: true, transformUnitLess: false });
 const remNoScale = createConverter('rem');
 const em = createConverter('em');
 
@@ -102,5 +108,6 @@ module.exports = {
   px,
   em,
   rem,
+  remStrict,
   remNoScale,
 };

@@ -41,6 +41,12 @@ const comaSeparatedInput = `
 }
 `;
 
+const unitLessInput = `
+.demo {
+  flex: 1 1 120px
+}
+`;
+
 describe('auto-rem', () => {
   it('it transforms px to rem values correctly', async () => {
     const res = await testTransform(baseInput, { autoRem: true });
@@ -64,6 +70,11 @@ describe('auto-rem', () => {
 
   it('transforms coma separated values correctly', async () => {
     const res = await testTransform(comaSeparatedInput, { autoRem: true });
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('does not transform values without units', async () => {
+    const res = await testTransform(unitLessInput, { autoRem: true });
     expect(res.css).toMatchSnapshot();
   });
 });

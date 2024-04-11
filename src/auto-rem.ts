@@ -1,7 +1,7 @@
 import { Declaration } from 'postcss';
 const unitsConverters = require('./converters');
 
-const rem = unitsConverters.rem;
+const rem = unitsConverters.remStrict;
 
 module.exports = () => {
   return {
