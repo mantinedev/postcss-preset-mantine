@@ -11,6 +11,10 @@ module.exports = () => {
         return;
       }
 
+      if (decl.prop === 'content') {
+        return;
+      }
+
       decl.value = rem(decl.value);
     },
   };

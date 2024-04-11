@@ -47,6 +47,17 @@ const unitLessInput = `
 }
 `;
 
+const contentInput = `
+.demo::before {
+  content: '10px';
+}
+`;
+
+const urlInput = `
+.demo {
+  background: url('https://example.com/10px.png');
+}`;
+
 describe('auto-rem', () => {
   it('it transforms px to rem values correctly', async () => {
     const res = await testTransform(baseInput, { autoRem: true });
@@ -75,6 +86,16 @@ describe('auto-rem', () => {
 
   it('does not transform values without units', async () => {
     const res = await testTransform(unitLessInput, { autoRem: true });
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('does not transform content property', async () => {
+    const res = await testTransform(contentInput, { autoRem: true });
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('does not transform url values', async () => {
+    const res = await testTransform(urlInput, { autoRem: true });
     expect(res.css).toMatchSnapshot();
   });
 });

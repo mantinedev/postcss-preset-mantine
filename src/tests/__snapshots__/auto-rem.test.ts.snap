@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`auto-rem does not transform content property 1`] = `
+"
+.demo::before {
+  content: '10px';
+}
+"
+`;
+
 exports[`auto-rem does not transform strings with rgba 1`] = `
 "
 .demo {
@@ -8,6 +16,13 @@ exports[`auto-rem does not transform strings with rgba 1`] = `
     rgb(0, 0, 0, 0.15) 0 0 3px inset;
 }
 "
+`;
+
+exports[`auto-rem does not transform url values 1`] = `
+"
+.demo {
+  background: url('https://example.com/10px.png');
+}"
 `;
 
 exports[`auto-rem does not transform values without units 1`] = `

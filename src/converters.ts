@@ -18,7 +18,19 @@ function createConverter(units: string, { shouldScale = false, transformUnitLess
     }
 
     if (typeof value === 'string') {
-      if (value.startsWith('calc(') || value.startsWith('clamp(') || value.includes('rgba(')) {
+      if (
+        value.startsWith('calc(') ||
+        value.startsWith('clamp(') ||
+        value.includes('rgba(') ||
+        value.includes('var(') ||
+        value.includes('min(') ||
+        value.includes('max(') ||
+        value.includes('url(') ||
+        value.includes('linear-gradient(') ||
+        value.includes('radial-gradient(') ||
+        value.includes('repeating-linear-gradient(') ||
+        value.includes('repeating-radial-gradient(')
+      ) {
         return value;
       }
 
