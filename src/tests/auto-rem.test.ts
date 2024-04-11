@@ -43,7 +43,7 @@ const comaSeparatedInput = `
 
 const unitLessInput = `
 .demo {
-  flex: 1 1 120px
+  flex: 1 0 120px
 }
 `;
 

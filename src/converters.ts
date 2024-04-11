@@ -8,7 +8,7 @@ function scaleRem(remValue: string) {
 
 function createConverter(units: string, { shouldScale = false, transformUnitLess = true } = {}) {
   function converter(value: unknown): string {
-    if (value === 0 || value === '0') {
+    if ((value === 0 || value === '0') && transformUnitLess) {
       return `0${units}`;
     }
 
