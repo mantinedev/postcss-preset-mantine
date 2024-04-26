@@ -130,6 +130,7 @@ const largerThanMixin = (_mixin: string, breakpoint: string) => ({
 
 interface Options {
   autoRem?: boolean;
+  mixins?: Record<string, any>;
 }
 
 module.exports = (options: Options = {}) => {
@@ -170,6 +171,7 @@ module.exports = (options: Options = {}) => {
           'where-not-ltr': notLtrWhereMixin,
           'smaller-than': smallerThanMixin,
           'larger-than': largerThanMixin,
+          ...(options.mixins || {}),
         },
       }),
     ],
