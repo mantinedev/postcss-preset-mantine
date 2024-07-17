@@ -4,7 +4,6 @@ const remEm = require('./postcss-rem-em');
 const colorMixAlpha = require('./postcss-color-mix');
 const lightDark = require('./postcss-light-dark');
 const converters = require('./converters');
-const theme = require('./postcss-mantine-theme');
 const autorem = require('./auto-rem');
 
 function colorSchemeMixin(colorScheme: 'light' | 'dark', type: 'where' | 'default' = 'default') {
@@ -144,7 +143,6 @@ module.exports = (options: Options = {}) => {
     postcssPlugin: 'postcss-preset-mantine',
     plugins: [
       lightDark(),
-      theme(),
       nested(),
       colorMixAlpha(),
       remEm(),
