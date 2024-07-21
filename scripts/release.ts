@@ -2,8 +2,6 @@ import path from 'node:path';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import yargs from 'yargs';
-import open from 'open';
-import githubRelease from 'new-github-release-url';
 import SimpleGit from 'simple-git';
 import { hideBin } from 'yargs/helpers';
 import { execa } from 'execa';
@@ -11,11 +9,6 @@ import signale from 'signale';
 import { getNextVersion, VersionStage, VersionIncrement } from 'version-next';
 import { run } from './run';
 import { updateVersion } from './update-version';
-
-function getRepositoryInfo(gitUrl: string) {
-  const [user, repo] = gitUrl.replace('git+https://github.com/', '').replace('.git', '').split('/');
-  return { user, repo };
-}
 
 const packageJsonPath = path.join(process.cwd(), 'package.json');
 const packageJson = fs.readJsonSync(packageJsonPath);
@@ -97,14 +90,6 @@ async function release() {
   await git.add([packageJsonPath]);
   await git.commit(`Release ${nextVersion}`);
   await git.push();
-
-  open(
-    githubRelease({
-      ...getRepositoryInfo(packageJson.repository.url),
-      tag: nextVersion,
-      title: nextVersion,
-    })
-  );
 }
 
 release();
