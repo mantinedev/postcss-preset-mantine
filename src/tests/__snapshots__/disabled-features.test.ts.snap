@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`disabled-features does not transform light/dark if lightDarkFunction is disabled 1`] = `
+"
+.card {
+  color: light-dark(#000, #fff);
+}
+"
+`;
+
+exports[`disabled-features does not transform rem if rem function is disabled 1`] = `
+"
+.card {
+  padding: rem(32px);
+}
+"
+`;

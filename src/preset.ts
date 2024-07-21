@@ -127,26 +127,56 @@ const largerThanMixin = (_mixin: string, breakpoint: string) => ({
   },
 });
 
-interface Options {
+export interface Options {
   autoRem?: boolean;
   mixins?: Record<string, any>;
+  features?: {
+    lightDarkFunction?: boolean;
+    nested?: boolean;
+    colorMixAlpha?: boolean;
+    remEmFunctions?: boolean;
+    mixins?: boolean;
+  };
 }
 
+const defaultFeatures = {
+  lightDarkFunction: true,
+  nested: true,
+  colorMixAlpha: true,
+  remEmFunctions: true,
+  mixins: true,
+};
+
 module.exports = (options: Options = {}) => {
+  const features = {
+    ...defaultFeatures,
+    ...(options.features || {}),
+  };
+
   const plugins = [];
 
   if (options.autoRem) {
     plugins.push(autorem());
   }
 
-  return {
-    postcssPlugin: 'postcss-preset-mantine',
-    plugins: [
-      lightDark(),
-      nested(),
-      colorMixAlpha(),
-      remEm(),
-      ...plugins,
+  if (features.lightDarkFunction) {
+    plugins.push(lightDark());
+  }
+
+  if (features.nested) {
+    plugins.push(nested());
+  }
+
+  if (features.colorMixAlpha) {
+    plugins.push(colorMixAlpha());
+  }
+
+  if (features.remEmFunctions) {
+    plugins.push(remEm());
+  }
+
+  if (features.mixins) {
+    plugins.push(
       mixins({
         mixins: {
           light: colorSchemeMixin('light'),
@@ -171,8 +201,13 @@ module.exports = (options: Options = {}) => {
           'larger-than': largerThanMixin,
           ...(options.mixins || {}),
         },
-      }),
-    ],
+      })
+    );
+  }
+
+  return {
+    postcssPlugin: 'postcss-preset-mantine',
+    plugins,
   };
 };
 
