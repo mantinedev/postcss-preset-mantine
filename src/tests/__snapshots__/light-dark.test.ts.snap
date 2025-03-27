@@ -48,6 +48,28 @@ exports[`light-dark works when there are commas in the value 1`] = `
 "
 `;
 
+exports[`light-dark works with !important 1`] = `
+"
+.button {
+  background: red !important;
+}
+  [data-mantine-color-scheme='dark'] .button {
+  background: blue !important;
+}
+"
+`;
+
+exports[`light-dark works with !important split 1`] = `
+"
+.button {
+  background: red !important;
+}
+  [data-mantine-color-scheme='dark'] .button {
+  background: blue;
+}
+"
+`;
+
 exports[`light-dark works with base input 1`] = `
 "
 .button {

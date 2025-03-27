@@ -186,6 +186,8 @@ Will be transformed to:
 }
 ```
 
+### light-dark with html and :root selectors
+
 Note that `light-dark` function does not work on `:root`/`html` element. Use `light-root` and `dark-root` mixins instead:
 
 ```scss
@@ -203,6 +205,43 @@ Note that `light-dark` function does not work on `:root`/`html` element. Use `li
   @mixin dark-root {
     --color: blue;
   }
+}
+```
+
+### light-dark and !important
+
+`!important` at rule level:
+
+```scss
+.button {
+  color: light-dark(red, blue) !important;
+}
+
+// Is transformed to
+.button {
+  background: red !important;
+}
+
+[data-mantine-color-scheme='dark'] .button {
+  background: blue !important;
+}
+```
+
+`!important` at value level:
+
+```scss
+// !important at value level
+.button {
+  color: light-dark(red !important, blue);
+}
+
+// Is transformed to
+.button {
+  background: red !important;
+}
+
+[data-mantine-color-scheme='dark'] .button {
+  background: blue;
 }
 ```
 

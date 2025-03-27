@@ -6,6 +6,18 @@ const baseInput = `
 }
 `;
 
+const importantInput = `
+.button {
+  background: light-dark(red, blue) !important;
+}
+`;
+
+const importantSplitInput = `
+.button {
+  background: light-dark(red !important, blue);
+}
+`;
+
 const mediaInput = `
 @media screen and (min-width: 400px) {
   .button {
@@ -59,6 +71,16 @@ describe('light-dark', () => {
 
   it('works when there are commas in the value', async () => {
     const res = await testTransform(commasInput);
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('works with !important', async () => {
+    const res = await testTransform(importantInput);
+    expect(res.css).toMatchSnapshot();
+  });
+
+  it('works with !important split', async () => {
+    const res = await testTransform(importantSplitInput);
     expect(res.css).toMatchSnapshot();
   });
 });
