@@ -2817,15 +2817,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fdir@npm:^6.4.3":
-  version: 6.4.3
-  resolution: "fdir@npm:6.4.3"
+"fdir@npm:^6.4.4":
+  version: 6.4.6
+  resolution: "fdir@npm:6.4.6"
   peerDependencies:
     picomatch: ^3 || ^4
   peerDependenciesMeta:
     picomatch:
       optional: true
-  checksum: 10c0/d13c10120e9625adf21d8d80481586200759928c19405a816b77dd28eaeb80e7c59c5def3e2941508045eb06d34eb47fad865ccc8bf98e6ab988bb0ed160fb6f
+  checksum: 10c0/45b559cff889934ebb8bc498351e5acba40750ada7e7d6bde197768d2fa67c149be8ae7f8ff34d03f4e1eb20f2764116e56440aaa2f6689e9a4aa7ef06acafe9
   languageName: node
   linkType: hard
 
@@ -4824,17 +4824,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-mixins@npm:^11.0.3":
-  version: 11.0.3
-  resolution: "postcss-mixins@npm:11.0.3"
+"postcss-mixins@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "postcss-mixins@npm:12.0.0"
   dependencies:
     postcss-js: "npm:^4.0.1"
     postcss-simple-vars: "npm:^7.0.1"
-    sugarss: "npm:^4.0.1"
-    tinyglobby: "npm:^0.2.7"
+    sugarss: "npm:^5.0.0"
+    tinyglobby: "npm:^0.2.14"
   peerDependencies:
     postcss: ^8.2.14
-  checksum: 10c0/dc19aafb4ae7de4a4f1a496e3cd35d33e97e6b3175799b8a2337335bb29c8dea5d474a89a0da44a7d5966cbee070b8bc333b4dd4e907ceb8734e983316aab862
+  checksum: 10c0/e5314488c143e3786f5fdec5da9002d914ef57cc51a261035fe342163a86a6f9e36e369da008f21c68691d0bd349aef3e10266ceb7e210da4a6a1296e782d214
   languageName: node
   linkType: hard
 
@@ -4865,7 +4865,7 @@ __metadata:
     fs-extra: "npm:^11.3.0"
     jest: "npm:^29.7.0"
     postcss: "npm:^8.5.3"
-    postcss-mixins: "npm:^11.0.3"
+    postcss-mixins: "npm:^12.0.0"
     postcss-nested: "npm:^7.0.2"
     prettier: "npm:^3.5.3"
     signale: "npm:^1.4.0"
@@ -5396,12 +5396,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sugarss@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "sugarss@npm:4.0.1"
+"sugarss@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "sugarss@npm:5.0.0"
   peerDependencies:
     postcss: ^8.3.3
-  checksum: 10c0/18b78c8839ab9eea9681366223277e10adf6b1dd54e7b64fbdae3a1234eedcc16a772bb62c8f3dc9665acc07496981e24bf773c8c362b5f294b9b1e12fbe58aa
+  checksum: 10c0/a7815f8e6e21bf1602ce2231c3fa4f32e3ac921d04bf25b834f99c97948ed681845573fc55b36c96c7330952ccb5213ff7a3af5ed5f277c5398dc0fd45ef5863
   languageName: node
   linkType: hard
 
@@ -5464,13 +5464,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyglobby@npm:^0.2.7":
-  version: 0.2.12
-  resolution: "tinyglobby@npm:0.2.12"
+"tinyglobby@npm:^0.2.14":
+  version: 0.2.14
+  resolution: "tinyglobby@npm:0.2.14"
   dependencies:
-    fdir: "npm:^6.4.3"
+    fdir: "npm:^6.4.4"
     picomatch: "npm:^4.0.2"
-  checksum: 10c0/7c9be4fd3625630e262dcb19015302aad3b4ba7fc620f269313e688f2161ea8724d6cb4444baab5ef2826eb6bed72647b169a33ec8eea37501832a2526ff540f
+  checksum: 10c0/f789ed6c924287a9b7d3612056ed0cda67306cd2c80c249fd280cf1504742b12583a2089b61f4abbd24605f390809017240e250241f09938054c9b363e51c0a6
   languageName: node
   linkType: hard
 
