@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 import yargs from 'yargs';
 import SimpleGit from 'simple-git';
 import { hideBin } from 'yargs/helpers';
-import { execa } from 'execa';
+import { $ } from 'zx';
 import signale from 'signale';
 import { getNextVersion, VersionStage, VersionIncrement } from 'version-next';
 import { run } from './run';
@@ -50,19 +50,19 @@ async function release() {
     `Current version: ${chalk.cyan(packageJson.version)}, next version: ${chalk.cyan(nextVersion)}`
   );
 
-  await run(execa('yarn'), {
+  await run($`yarn`, {
     info: 'Installing fresh dependencies',
     success: 'Fresh dependencies have been installed',
     error: 'Failed to install fresh dependencies',
   });
 
-  await run(execa('yarn', ['run', 'clean']), {
+  await run($`yarn run clean`, {
     info: 'Removing dist directory',
     success: 'dist directory has been removed',
     error: 'Failed to remove dist directory',
   });
 
-  await run(execa('yarn', ['run', 'build']), {
+  await run($`yarn run build`, {
     info: 'Building the package',
     success: 'The package has been built',
     error: 'Failed to build the package',
@@ -71,14 +71,7 @@ async function release() {
   const revertVersion = await updateVersion(nextVersion);
 
   await run(
-    execa('yarn', [
-      'npm',
-      'publish',
-      '--access',
-      'public',
-      '--tag',
-      versionStage ? 'next' : 'latest',
-    ]),
+    $`npm publish --access public --tag ${versionStage ? 'next' : 'latest'}`,
     {
       info: 'Publishing the package to npm',
       success: 'The package has been published to npm',
